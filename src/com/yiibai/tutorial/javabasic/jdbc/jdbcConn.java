@@ -5,6 +5,49 @@ import java.sql.*;
 public class jdbcConn {
 
 	public static void main(String[] args) {
+		System.out.println("start to connect to mysql");
+		mysqlConn();
+
+		System.out.println("start to connect to sqlserver");
+		sqlserverConn();
+
+	}
+
+	public static void sqlserverConn() {
+		try {
+
+			System.out.println("This is the testing for jdbc");
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver.class");
+			System.out.println("Success loading sqlserver Driver!");
+		} catch (ClassNotFoundException e) {
+			System.out.println("Class not found " + e);
+		}
+
+		catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.toString());
+			System.out.println(e.getStackTrace());
+		}
+
+		try {
+
+			Connection connection = DriverManager.getConnection("jdbc:sqlserver://cow/igenkeymapping", "sa", "igen");
+			System.out.println("Success connect sql server!");
+			Statement stmt = connection.createStatement();
+			ResultSet rSet = stmt.executeQuery("select top 10 * from mlsdbigenkeymapping;");
+
+			while (rSet.next()) {
+				System.out.println(rSet.getString(2));
+			}
+
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.toString());
+			System.out.println(e.getStackTrace());
+		}
+	}
+
+	public static void mysqlConn() {
 		try {
 
 			System.out.println("This is the testing for jdbc");
@@ -36,7 +79,6 @@ public class jdbcConn {
 			System.out.println(e.toString());
 			System.out.println(e.getStackTrace());
 		}
-
 	}
 
 }
