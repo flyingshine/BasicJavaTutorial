@@ -17,7 +17,7 @@ public class jdbcConn {
 		try {
 
 			System.out.println("This is the testing for jdbc");
-			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver.class");
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			System.out.println("Success loading sqlserver Driver!");
 		} catch (ClassNotFoundException e) {
 			System.out.println("Class not found " + e);
@@ -31,13 +31,14 @@ public class jdbcConn {
 
 		try {
 
-			Connection connection = DriverManager.getConnection("jdbc:sqlserver://cow/igenkeymapping", "sa", "igen");
+			Connection connection = DriverManager.getConnection("jdbc:sqlserver://cow;DatabaseName=iGenDev_Mapping_MST",
+					"sa", "igen");
 			System.out.println("Success connect sql server!");
 			Statement stmt = connection.createStatement();
-			ResultSet rSet = stmt.executeQuery("select top 10 * from mlsdbigenkeymapping;");
+			ResultSet rSet = stmt.executeQuery("select count(1) from Feature_Mapping;");
 
 			while (rSet.next()) {
-				System.out.println(rSet.getString(2));
+				System.out.println(rSet.getString(1));
 			}
 
 		} catch (Exception e) {
