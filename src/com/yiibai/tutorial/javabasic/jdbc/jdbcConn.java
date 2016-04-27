@@ -5,8 +5,8 @@ import java.sql.*;
 public class jdbcConn {
 
 	public static void main(String[] args) {
-		System.out.println("start to connect to mysql");
-		mysqlConn();
+//		System.out.println("start to connect to mysql");
+//		mysqlConn();
 
 		System.out.println("start to connect to sqlserver");
 		sqlserverConn();
@@ -14,20 +14,20 @@ public class jdbcConn {
 	}
 
 	public static void sqlserverConn() {
-		try {
-
-			System.out.println("This is the testing for jdbc");
-			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			System.out.println("Success loading sqlserver Driver!");
-		} catch (ClassNotFoundException e) {
-			System.out.println("Class not found " + e);
-		}
-
-		catch (Exception e) {
-			// TODO: handle exception
-			System.out.println(e.toString());
-			System.out.println(e.getStackTrace());
-		}
+//		try {
+//
+//			System.out.println("This is the testing for jdbc");
+//			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+//			System.out.println("Success loading sqlserver Driver!");
+//		} catch (ClassNotFoundException e) {
+//			System.out.println("Class not found " + e);
+//		}
+//
+//		catch (Exception e) {
+//			// TODO: handle exception
+//			System.out.println(e.toString());
+//			System.out.println(e.getStackTrace());
+//		}
 
 		try {
 
